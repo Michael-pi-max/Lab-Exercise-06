@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const link = document.createElement("a");
             link.className = "delete-item secondary-content";
             link.innerHTML = `
+                    <span style="margin-right:800px">${cursor.value.taskdate.toLocaleDateString()}</span>
                     <i class="fa fa-remove"></i>
                     &nbsp;
                     <a href="./edit.html?id=${cursor.value.id}"><i class="fa fa-edit"></i> </a>
@@ -159,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const link = document.createElement("a");
                 link.className = "delete-item secondary-content";
                 link.innerHTML = `
+                    <span style="margin-right:800px">${li.taskDate.toLocaleDateString()}</span>
                     <i class="fa fa-remove"></i>
                     &nbsp;
                     <a href="./edit.html?id=${index + 1}"><i class="fa fa-edit"></i> </a>
@@ -191,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const link = document.createElement("a");
                 link.className = "delete-item secondary-content";
                 link.innerHTML = `
+                    <span style="margin-right:800px">${li.taskDate.toLocaleDateString()}</span>
                     <i class="fa fa-remove"></i>
                     &nbsp;
                     <a href="./edit.html?id=${index + 1}"><i class="fa fa-edit"></i> </a>
