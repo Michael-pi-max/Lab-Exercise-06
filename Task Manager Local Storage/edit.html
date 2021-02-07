@@ -9,10 +9,9 @@
     <!-- Font Owesome Compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Custom Css -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="shortcut icon" type="image/svg" href="assets/img/tasks-solid.svg" />
-    
     <title>Task List App</title>
 </head>
 
@@ -39,40 +38,21 @@
 
 
     <!-- card start  -->
+
     <div class="row">
         <div class="col s12">
             <div id="main" class="card">
                 <div class="card-content">
-                    <span class="card-title">Daily Task Manager</span>
+                    <span class="card-title">Update Task Page</span>
                     <div class="row">
                         <form id="task-form">
                             <div class="input-field col s12">
                                 <input type="text" name="task" id="task">
-                                <label for="task">Add New Task</label>
                             </div>
-                            <input type="submit" value="Add New Task" class="btn blue">
+                            <input type="submit" value="Update Task" class="btn blue">
                         </form>
+
                     </div>
-                </div>
-                <div class="card-action">
-                    <h5 id="task-title" style="display:inline-block">List of Tasks</h5>
-                    <h5 class="secondary-content">
-                        <!-- Dropdown Trigger -->
-                        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-                        <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content'>
-                            <li><a class="ascending" href="#!">Asc</a></li>
-                            <li><a class="descending" href="#!">Desc</a></li>
-                        </ul>
-                    </h5>
-                    <div class="input-field col s12">
-                        <input type="search" name="filter" id="filter">
-                        <label for="filter">Search</label>
-                    </div>
-                    <ul class="collection">
-                        <!-- Here is the task list goes  -->
-                    </ul>
-                    <a href="#" class="clear-tasks btn red">Clear All Task</a>
                 </div>
             </div>
         </div>
@@ -80,16 +60,20 @@
     </div>
 
     <!-- Card End  -->
+
+
+
+
+
     <!-- Jquery Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- Materialize Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        $('.dropdown-trigger').dropdown();
-    </script>
-    <!-- Our Own Js  -->
-    <script src="assets/js/app.js"></script>
 
+    <!-- Storage Js -->
+    <!-- <script src="assets/js/indexDB.js"></script> -->
+    <!-- Our Own Js  -->
+    <script src="assets/js/edit.js"></script>
 </body>
 
 </html>
