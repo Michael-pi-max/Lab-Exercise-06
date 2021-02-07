@@ -138,22 +138,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function sortTasksAsc(e){
-        const content = Array.from(container.querySelectorAll("LI"));
-        content.sort(function(a,b){
-            let aa = a.children[1].textContent;
-            let bb = b.children[1].textContent;
-            return aa < bb ? -1 : (aa > bb ? 1 : 0);
-        }).forEach(li => container.appendChild(li));       
+        let container = taskList;
+        container.innerHTML = "";
+        let objectStore = DB.transaction("tasks").objectStore("tasks");
+        var allRecords = objectStore.getAll();
+        allRecords.onsuccess = function() {
+            const taskNames = allRecords.result.map((allRecord) => ({
+                taskname : allRecord.taskname,
+                taskDate :  allRecord.taskdate,
+            }));
+            taskNames.sort(function(a,b){
+                let aa = a.taskDate;
+                let bb = b.taskDate;
+                return aa < bb ? -1 : (aa > bb ? 1 : 0);
+            }).forEach((li, index) => {
+                list = document.createElement("li");
+                list.setAttribute("data-task-id", index + 1);
+                list.className = "collection-item";
+                list.appendChild(document.createTextNode(li.taskname));
+                const link = document.createElement("a");
+                link.className = "delete-item secondary-content";
+                link.innerHTML = `
+                    <i class="fa fa-remove"></i>
+                    &nbsp;
+                    <a href="./edit.html?id=${index + 1}"><i class="fa fa-edit"></i> </a>
+                    `;
+                list.appendChild(link); 
+                container.appendChild(list);
+            });
+        };
     }
     
     function sortTasksDesc(e){
-        var container = taskList;
-        const content = Array.from(container.querySelectorAll("LI"));
-        content.sort(function(a,b){
-            let aa = a.children[1].textContent;
-            let bb = b.children[1].textContent;
-            return aa > bb ? -1 : (aa < bb ? 1 : 0);
-        }).forEach(li => container.appendChild(li));    
+        let container = taskList;
+        container.innerHTML = "";
+        let objectStore = DB.transaction("tasks").objectStore("tasks");
+        var allRecords = objectStore.getAll();
+        allRecords.onsuccess = function() {
+            const taskNames = allRecords.result.map((allRecord) => ({
+                taskname : allRecord.taskname,
+                taskDate :  allRecord.taskdate,
+            }));
+            taskNames.sort(function(a,b){
+                let aa = a.taskDate;
+                let bb = b.taskDate;
+                return aa > bb ? -1 : (aa < bb ? 1 : 0);
+            }).forEach((li, index) => {
+                list = document.createElement("li");
+                list.setAttribute("data-task-id", index + 1);
+                list.className = "collection-item";
+                list.appendChild(document.createTextNode(li.taskname));
+                const link = document.createElement("a");
+                link.className = "delete-item secondary-content";
+                link.innerHTML = `
+                    <i class="fa fa-remove"></i>
+                    &nbsp;
+                    <a href="./edit.html?id=${index + 1}"><i class="fa fa-edit"></i> </a>
+                    `;
+                list.appendChild(link); 
+                container.appendChild(list);
+            });
+            //.forEach(li => container.appendChild(li));
+        };
     }
     
     function filterTasks(e) {
