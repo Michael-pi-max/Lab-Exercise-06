@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let newTask = {
             id:id,
             taskname: taskInput.value, 
-            date: new Date()
+            date: new Date().toLocaleDateString()
         }
         let transaction = DB.transaction(["tasks"], 'readwrite');
         let objectStore = transaction.objectStore("tasks");

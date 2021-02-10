@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const link = document.createElement("a");
             link.className = "delete-item secondary-content";
             link.innerHTML = `
-                    <span style="margin-right:800px">${cursor.value.taskdate.toLocaleDateString()}</span>
+                    <span style="margin-right:800px">${new Date(cursor.value.date).toLocaleDateString()}</span>
                     <i class="fa fa-remove"></i>
                     &nbsp;
                     <a href="./edit.html?id=${cursor.value.id}"><i class="fa fa-edit"></i> </a>
@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const taskNames = allRecords.result.map((allRecord) => ({
                 taskname : allRecord.taskname,
                 taskDate :  allRecord.taskdate,
+                taskId : allRecord.id,
             }));
             taskNames.sort(function(a,b){
                 let aa = a.taskDate;
@@ -154,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return aa < bb ? -1 : (aa > bb ? 1 : 0);
             }).forEach((li, index) => {
                 list = document.createElement("li");
-                list.setAttribute("data-task-id", index + 1);
+                list.setAttribute("data-task-id", li.taskId);
                 list.className = "collection-item";
                 list.appendChild(document.createTextNode(li.taskname));
                 const link = document.createElement("a");
@@ -163,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span style="margin-right:800px">${li.taskDate.toLocaleDateString()}</span>
                     <i class="fa fa-remove"></i>
                     &nbsp;
-                    <a href="./edit.html?id=${index + 1}"><i class="fa fa-edit"></i> </a>
+                    <a href="./edit.html?id=${li.taskId}"><i class="fa fa-edit"></i> </a>
                     `;
                 list.appendChild(link); 
                 container.appendChild(list);
@@ -180,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const taskNames = allRecords.result.map((allRecord) => ({
                 taskname : allRecord.taskname,
                 taskDate :  allRecord.taskdate,
+                taskId : allRecord.id,
             }));
             taskNames.sort(function(a,b){
                 let aa = a.taskDate;
@@ -187,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return aa > bb ? -1 : (aa < bb ? 1 : 0);
             }).forEach((li, index) => {
                 list = document.createElement("li");
-                list.setAttribute("data-task-id", index + 1);
+                list.setAttribute("data-task-id", li.taskId);
                 list.className = "collection-item";
                 list.appendChild(document.createTextNode(li.taskname));
                 const link = document.createElement("a");
@@ -196,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span style="margin-right:800px">${li.taskDate.toLocaleDateString()}</span>
                     <i class="fa fa-remove"></i>
                     &nbsp;
-                    <a href="./edit.html?id=${index + 1}"><i class="fa fa-edit"></i> </a>
+                    <a href="./edit.html?id=${li.taskId}"><i class="fa fa-edit"></i> </a>
                     `;
                 list.appendChild(link); 
                 container.appendChild(list);
